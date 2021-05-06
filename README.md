@@ -14,7 +14,7 @@ QueryInst is a query based instance segmentation method driven by parallel super
 ![QueryInst](resources/QueryInst.png)
 
 ## Updates
-[06/05/2021] 🌟 QueryInst training and inference code has released!
+[06/05/2021] 🌟 QueryInst training and inference code has been released!
 
 ## Getting Started
 
