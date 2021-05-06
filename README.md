@@ -11,7 +11,75 @@ QueryInst is a query based instance segmentation method driven by parallel super
 >
 > (\*) equal contribution, (†) corresponding author.
 
-![QueryInst](QueryInst.png)
+![QueryInst](resources/QueryInst.png)
 
 ## Updates
-[06/05/2021] 🌟 Code is coming in several hours!
+[06/05/2021] 🌟 QueryInst training and inference code has released!
+
+## Getting Started
+
+* Our project is mainly developed on [mmdetection codebase](), please refer to the [mmdetection official installation]().
+* Install `QueryInst` by:
+
+```bash
+python setup.py develop
+```
+
+* Prepare datasets:
+
+```bash
+mkdir data && cd data
+ln -s /path/to/coco coco
+```
+
+* Training QueryInst with single GPU:
+
+```bash
+python tools/train.py configs/queryinst/queryinst_r50_fpn_1x_coco.py
+```
+
+* Training QueryInst with multi GPUs:
+
+```bash
+./tools/dist_train.sh configs/queryinst/queryinst_r50_fpn_1x_coco.py 8
+```
+
+* Test QueryInst on COCO val set with single GPU:
+
+```bash
+python tools/test.py configs/queryinst/queryinst_r50_fpn_1x_coco.py PATH/TO/CKPT.pth --eval bbox segm
+```
+
+* Test QueryInst on COCO val set with multi GPUs:
+
+```bash
+./tools/dist_test.sh configs/queryinst/queryinst_r50_fpn_1x_coco.py PATH/TO/CKPT.pth 8 --eval bbox segm
+```
+
+## Main Results on COCO val
+
+|                            Method                            |        Aug         | Weights | Box AP | Mask AP |
+| :----------------------------------------------------------: | :----------------: | :-----: | :----: | :-----: |
+| [QueryInst\_R50\_3x\_300_queries](configs/queryinst/queryinst_r50_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  46.9  |  41.4   |
+| [QueryInst\_R101\_3x\_300_queries](configs/queryinst/queryinst_r101_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  48.0  |  42.4   |
+|              QueryInst_X101-DCN_3x_300_queries               | 480 ~ 800, w/ Crop |    -    |  50.3  |  44.2   |
+
+## Citation
+
+If you find our paper and code useful in your research, please consider citing:
+
+```BibTeX
+@article{QueryInst,
+  title={QueryInst: Parallelly Supervised Mask Query for Instance Segmentation},
+  author={Fang, Yuxin and Yang, Shusheng and Wang, Xinggang and Li, Yu and Fang, Chen and Shan, Ying and Feng, Bin and Liu, Wenyu},
+  journal={arXiv preprint arXiv:2105.01928},
+  year={2021}
+}
+```
+
+## TODO
+
+- [x] QueryInst training and inference code.
+- [ ] QueryInst based on Detectron2 toolbox will be released in the near future.
+- [ ] QueryInst configurations for Cityscapes and YouTube-VIS.
+- [ ] QueryInst pretrain weights.
