@@ -14,4 +14,4 @@ An efficient query based approach for instance segmentation.
 ![QueryInst](http://assets.vealocia.com/2021-05-05-133231.png)
 
 ## Updates
-[06/05/2021] 🌟 Code is coming soon in several hours!
+[06/05/2021] 🌟 Code is coming in several hours!
