@@ -18,7 +18,7 @@ QueryInst is a query based instance segmentation method driven by parallel super
 
 ## Getting Started
 
-* Our project is mainly developed on [mmdetection codebase](https://github.com/open-mmlab/mmdetection), please refer to the [mmdetection official installation](https://github.com/open-mmlab/mmdetection/blob/master/docs/get_started.md).
+* Our project is mainly developed on [mmdetection codebase `(931d96)`](https://github.com/open-mmlab/mmdetection), please refer to the [mmdetection official installation](https://github.com/open-mmlab/mmdetection/blob/master/docs/get_started.md).
 * Install `QueryInst` by:
 
 ```bash
