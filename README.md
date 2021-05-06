@@ -1,8 +1,6 @@
 # QueryInst: Parallelly Supervised Mask Query for Instance Segmentation
 
-QueryInst is a query based instance segmentation method driven by parallel supervision on dynamic mask heads.
-
-* This repo serves as an official implementation for QueryInst.
+TL;DR: QueryInst is a query based instance segmentation method driven by parallel supervision on dynamic mask heads, which outperforms previous arts in terms of both accuracy and speed.
 
 > [QueryInst: Parallelly Supervised Mask Query for Instance Segmentation](http://arxiv.org/abs/2105.01928
 ),
@@ -13,12 +11,14 @@ QueryInst is a query based instance segmentation method driven by parallel super
 
 ![QueryInst](resources/QueryInst.png)
 
+This repo serves as an official implementation for QueryInst, based on [mmdetection](https://github.com/open-mmlab/mmdetection) and build upon [Sparse R-CNN](https://github.com/PeizeSun/SparseR-CNN) & [DETR](https://github.com/facebookresearch/detr).
+
 ## Updates
 [06/05/2021] 🌟 QueryInst training and inference code has been released!
 
 ## Getting Started
 
-* Our project is mainly developed on [mmdetection codebase `(931d96)`](https://github.com/open-mmlab/mmdetection), please refer to the [mmdetection official installation](https://github.com/open-mmlab/mmdetection/blob/master/docs/get_started.md).
+* Our project is mainly developed on [mmdetection toolbox `(931d96)`](https://github.com/open-mmlab/mmdetection), please refer to the [mmdetection official installation](https://github.com/open-mmlab/mmdetection/blob/master/docs/get_started.md).
 * Install `QueryInst` by:
 
 ```bash
