@@ -66,7 +66,7 @@ python tools/test.py configs/queryinst/queryinst_r50_fpn_1x_coco.py PATH/TO/CKPT
 
 ## Citation
 
-If you find our paper and code useful in your research, please consider citing:
+If you find our paper and code useful in your research, please consider giving a star :star: and citation :pencil: :
 
 ```BibTeX
 @article{QueryInst,
