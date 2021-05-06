@@ -12,7 +12,7 @@
 
 ![QueryInst](resources/QueryInst.png)
 
-This repo serves as the official implementation for QueryInst, based on [mmdetection](https://github.com/open-mmlab/mmdetection) and built upon [Sparse R-CNN](https://github.com/PeizeSun/SparseR-CNN) & [DETR](https://github.com/facebookresearch/detr). Implantations based on [Detectron2 ](https://github.com/facebookresearch/detectron2) will be released in the near future.
+This repo serves as the official implementation for [QueryInst](http://arxiv.org/abs/2105.01928), based on [mmdetection](https://github.com/open-mmlab/mmdetection) and built upon [Sparse R-CNN](https://github.com/PeizeSun/SparseR-CNN) & [DETR](https://github.com/facebookresearch/detr). Implantations based on [Detectron2 ](https://github.com/facebookresearch/detectron2) will be released in the near future.
 
 ## Updates
 [06/05/2021] 🌟 QueryInst training and inference code has been released!
