@@ -1,6 +1,6 @@
 # QueryInst: Parallelly Supervised Mask Query for Instance Segmentation
 
-An efficient query based approach for instance segmentation.
+QueryInst is a query based instance segmentation method driven by parallel supervision on dynamic mask heads.
 
 * This repo serves as an official implementation for QueryInst.
 
