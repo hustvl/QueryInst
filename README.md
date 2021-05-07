@@ -18,10 +18,10 @@
 
 This repo serves as the official implementation for [QueryInst](http://arxiv.org/abs/2105.01928), based on [mmdetection](https://github.com/open-mmlab/mmdetection) and built upon [Sparse R-CNN](https://github.com/PeizeSun/SparseR-CNN) & [DETR](https://github.com/facebookresearch/detr). Implantations based on [Detectron2 ](https://github.com/facebookresearch/detectron2) will be released in the near future.
 
-## Updates
+### Updates
 [06/05/2021] 🌟 QueryInst training and inference code has been released!
 
-## Getting Started
+### Getting Started
 
 * Our project is mainly developed on [mmdetection toolbox `(931d96)`](https://github.com/open-mmlab/mmdetection), please refer to the [mmdetection official installation](https://github.com/open-mmlab/mmdetection/blob/master/docs/get_started.md).
 * Install `QueryInst` by:
@@ -61,7 +61,7 @@ python tools/test.py configs/queryinst/queryinst_r50_fpn_1x_coco.py PATH/TO/CKPT
 ./tools/dist_test.sh configs/queryinst/queryinst_r50_fpn_1x_coco.py PATH/TO/CKPT.pth 8 --eval bbox segm
 ```
 
-## Main Results on COCO val
+### Main Results on COCO val
 
 |                            Method                            |        Aug         | Weights | Box AP | Mask AP |
 | :----------------------------------------------------------: | :----------------: | :-----: | :----: | :-----: |
@@ -69,7 +69,7 @@ python tools/test.py configs/queryinst/queryinst_r50_fpn_1x_coco.py PATH/TO/CKPT
 | [QueryInst\_R101\_3x\_300_queries](configs/queryinst/queryinst_r101_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  48.0  |  42.4   |
 |              QueryInst_X101-DCN_3x_300_queries               | 480 ~ 800, w/ Crop |    -    |  50.3  |  44.2   |
 
-## Citation
+### Citation
 
 If you find our paper and code useful in your research, please consider giving a star :star: and citation :pencil: :
 
@@ -82,7 +82,7 @@ If you find our paper and code useful in your research, please consider giving a
 }
 ```
 
-## TODO
+### TODO
 
 - [x] QueryInst training and inference code.
 - [ ] QueryInst based on [Detectron2 toolbox](https://github.com/facebookresearch/detectron2) will be released in the near future.
