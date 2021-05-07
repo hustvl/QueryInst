@@ -63,7 +63,7 @@ python tools/test.py configs/queryinst/queryinst_r50_fpn_1x_coco.py PATH/TO/CKPT
 
 ### Main Results on COCO val
 
-|                            Method                            |        Aug         | Weights | Box AP | Mask AP |
+|                            Configs                            |        Aug.         | Weights | Box AP | Mask AP |
 | :----------------------------------------------------------: | :----------------: | :-----: | :----: | :-----: |
 | [QueryInst\_R50\_3x\_300_queries](configs/queryinst/queryinst_r50_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  46.9  |  41.4   |
 | [QueryInst\_R101\_3x\_300_queries](configs/queryinst/queryinst_r101_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  48.0  |  42.4   |
