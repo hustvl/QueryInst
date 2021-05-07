@@ -1,6 +1,6 @@
 <div align="center">   
 
-# QueryInst: Parallelly Supervised Mask Query for Instance Segmentation
+## QueryInst: Parallelly Supervised Mask Query for Instance Segmentation
 </div>
 
 
