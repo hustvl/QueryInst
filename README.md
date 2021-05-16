@@ -4,8 +4,11 @@
 </div>
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/instance-segmentation-on-coco-minival)](https://paperswithcode.com/sota/instance-segmentation-on-coco-minival?p=queryinst-parallelly-supervised-mask-query)
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/instance-segmentation-on-coco)](https://paperswithcode.com/sota/instance-segmentation-on-coco?p=queryinst-parallelly-supervised-mask-query)
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/object-detection-on-coco-minival)](https://paperswithcode.com/sota/object-detection-on-coco-minival?p=queryinst-parallelly-supervised-mask-query)
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/object-detection-on-coco)](https://paperswithcode.com/sota/object-detection-on-coco?p=queryinst-parallelly-supervised-mask-query)
 
 * TL;DR: QueryInst is a simple and effective query based instance segmentation method driven by parallel supervision on dynamic mask heads, which outperforms previous arts in terms of both accuracy and speed.
