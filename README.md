@@ -9,7 +9,7 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/object-detection-on-coco)](https://paperswithcode.com/sota/object-detection-on-coco?p=queryinst-parallelly-supervised-mask-query)
 
 * **TL;DR:** QueryInst is a simple and effective query based instance segmentation method driven by parallel supervision on dynamic mask heads, which outperforms previous arts in terms of both accuracy and speed.
-* Our QueryVIS based on QueryInst won [**the 2nd place** `(AP = 52.3 @ test set, AP = 54.3 @ val set)`](https://competitions.codalab.org/competitions/28988#results) in [video instance segmentation (VIS) task](https://arxiv.org/abs/1905.04804) with **single model and single scale testing** in the 3rd Large-scale Video Object Segmentation Challenge in conjunction with CVPR 2021. 
+* Our QueryVIS based on QueryInst won [**the 2nd place** `(AP = 52.3 @ test set, AP = 54.3 @ val set)`](https://competitions.codalab.org/competitions/28988#results) in video instance segmentation (VIS) track with **single model, single scale testing & without using extra video training data** in the 3rd Large-scale Video Object Segmentation Challenge, CVPR 2021. 
 * For the first time, we demonstrate that an end-to-end query based framework driven by parallel supervision is competitive with well-established and highly-optimized methods in a wide range of instance-level recognition tasks ([object detection](https://paperswithcode.com/sota/object-detection-on-coco), [instance segmentation](https://paperswithcode.com/sota/instance-segmentation-on-coco) and video instance segmentation).
 
 > [**QueryInst: Parallelly Supervised Mask Query for Instance Segmentation**](http://arxiv.org/abs/2105.01928),
