@@ -24,8 +24,23 @@
 
 * This project is under active development, we will extend [QueryInst](http://arxiv.org/abs/2105.01928) to a wide range of instance-level recognition tasks.
 
-### Updates
-[06/05/2021] 🌟 QueryInst training and inference code has been released!
+
+### Main Results on COCO test-dev
+
+|                            Configs                            |        Aug.         | Weights | Box AP | Mask AP |
+| :----------------------------------------------------------: | :----------------: | :-----: | :----: | :-----: |
+|              QueryInst_Swin_L_300_queries (single scale testing)               | 400 ~ 1200, w/ Crop |    -    |  [56.1](https://gist.github.com/Yuxin-CV/f477cb2a310e2db2b26112ae0f167baf)  |  [49.1](https://gist.github.com/Yuxin-CV/0e93ec9ab4c2d05be2d8a6cc61cd2f6b)   |
+
+
+### Main Results on COCO val
+
+|                            Configs                            |        Aug.         | Weights | Box AP | Mask AP |
+| :----------------------------------------------------------: | :----------------: | :-----: | :----: | :-----: |
+| [QueryInst\_R50\_3x\_300_queries](configs/queryinst/queryinst_r50_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  46.9  |  41.4   |
+| [QueryInst\_R101\_3x\_300_queries](configs/queryinst/queryinst_r101_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  48.0  |  42.4   |
+|              QueryInst_X101-DCN_3x_300_queries               | 480 ~ 800, w/ Crop |    -    |  50.3  |  44.2   |
+|              QueryInst_Swin_L_300_queries (single scale testing)          | 400 ~ 1200, w/ Crop |    -    |  56.1  |  48.9   |
+
 
 ### Getting Started
 
@@ -66,14 +81,6 @@ python tools/test.py configs/queryinst/queryinst_r50_fpn_1x_coco.py PATH/TO/CKPT
 ```bash
 ./tools/dist_test.sh configs/queryinst/queryinst_r50_fpn_1x_coco.py PATH/TO/CKPT.pth 8 --eval bbox segm
 ```
-
-### Main Results on COCO val
-
-|                            Configs                            |        Aug.         | Weights | Box AP | Mask AP |
-| :----------------------------------------------------------: | :----------------: | :-----: | :----: | :-----: |
-| [QueryInst\_R50\_3x\_300_queries](configs/queryinst/queryinst_r50_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  46.9  |  41.4   |
-| [QueryInst\_R101\_3x\_300_queries](configs/queryinst/queryinst_r101_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  48.0  |  42.4   |
-|              QueryInst_X101-DCN_3x_300_queries               | 480 ~ 800, w/ Crop |    -    |  50.3  |  44.2   |
 
 ### Citation
 
