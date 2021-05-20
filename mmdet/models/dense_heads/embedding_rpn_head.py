@@ -105,3 +105,14 @@ class EmbeddingRPNHead(BaseModule):
     def simple_test_rpn(self, img, img_metas):
         """Forward function in testing stage."""
         return self._decode_init_proposals(img, img_metas)
+
+    def aug_test_rpn(self, imgs, img_metas):
+        aug_proposal_boxes = []
+        aug_proposal_features = []
+        aug_imgs_whwh = []
+        for img, img_meta in zip(imgs, img_metas):
+            proposal_boxes, proposal_features, imgs_whwh = self.simple_test_rpn(img, img_meta)
+            aug_proposal_boxes.append(proposal_boxes)
+            aug_proposal_features.append(proposal_features)
+            aug_imgs_whwh.append(imgs_whwh)
+        return aug_proposal_boxes, aug_proposal_features, aug_imgs_whwh

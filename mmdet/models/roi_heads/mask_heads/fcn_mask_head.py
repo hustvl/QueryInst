@@ -72,6 +72,7 @@ class FCNMaskHead(BaseModule):
                     self.conv_out_channels,
                     self.conv_kernel_size,
                     padding=padding,
+                    bias=True,
                     conv_cfg=conv_cfg,
                     norm_cfg=norm_cfg))
         upsample_in_channels = (
@@ -173,7 +174,7 @@ class FCNMaskHead(BaseModule):
         return loss
 
     def get_seg_masks(self, mask_pred, det_bboxes, det_labels, rcnn_test_cfg,
-                      ori_shape, scale_factor, rescale):
+                      ori_shape, scale_factor, rescale, format=True):
         """Get segmentation masks from mask_pred and bboxes.
 
         Args:
@@ -319,7 +320,7 @@ class FCNMaskHead(BaseModule):
 
         for i in range(N):
             cls_segms[labels[i]].append(im_mask[i].detach().cpu().numpy())
-        return cls_segms
+        return cls_segms if format else im_mask
 
 
 def _do_paste_mask(masks, boxes, img_h, img_w, skip_empty=True):

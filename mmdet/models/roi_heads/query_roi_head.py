@@ -1,10 +1,18 @@
 import torch
+import numpy as np
 
-from mmdet.core import bbox2result, bbox2roi, bbox_xyxy_to_cxcywh
+from mmdet.core import bbox2result, bbox2roi, bbox_xyxy_to_cxcywh, bbox_flip
 from mmdet.core.bbox.samplers import PseudoSampler
 from ..builder import HEADS
 from .cascade_roi_head import CascadeRoIHead
 
+from mmcv.ops.nms import batched_nms
+
+def mask2results(mask_preds, det_labels, num_classes):
+    cls_segms = [[] for _ in range(num_classes)]
+    for i in range(mask_preds.shape[0]):
+        cls_segms[det_labels[i]].append(mask_preds[i])
+    return cls_segms
 
 @HEADS.register_module()
 class QueryRoIHead(CascadeRoIHead):
@@ -410,8 +418,141 @@ class QueryRoIHead(CascadeRoIHead):
 
         return results
 
-    def aug_test(self, features, proposal_list, img_metas, rescale=False):
-        raise NotImplementedError('QueryInst does not support `aug_test`')
+    def aug_test(self,
+                 aug_x,
+                 aug_proposal_boxes,
+                 aug_proposal_features,
+                 aug_img_metas,
+                 aug_imgs_whwh,
+                 rescale=False):
+        
+        samples_per_gpu = len(aug_img_metas[0])
+        aug_det_bboxes = [[] for _ in range(samples_per_gpu)]
+        aug_det_labels = [[] for _ in range(samples_per_gpu)]
+        aug_mask_preds = [[] for _ in range(samples_per_gpu)]
+        for x, proposal_boxes, proposal_features, img_metas, imgs_whwh in \
+            zip(aug_x, aug_proposal_boxes, aug_proposal_features, aug_img_metas, aug_imgs_whwh):
+            
+
+            num_imgs = len(img_metas)
+            proposal_list = [proposal_boxes[i] for i in range(num_imgs)]
+            ori_shapes = tuple(meta['ori_shape'] for meta in img_metas)
+            scale_factors = tuple(meta['scale_factor'] for meta in img_metas)
+
+            object_feats = proposal_features
+            for stage in range(self.num_stages):
+                rois = bbox2roi(proposal_list)
+                bbox_results = self._bbox_forward(stage, x, rois, object_feats,
+                                                img_metas)
+                object_feats = bbox_results['object_feats']
+                cls_score = bbox_results['cls_score']
+                proposal_list = bbox_results['detach_proposal_list']
+            
+            if self.with_mask:
+                rois = bbox2roi(proposal_list)
+                mask_results = self._mask_forward(stage, x, rois, bbox_results['attn_feats'])
+                mask_results['mask_pred'] = mask_results['mask_pred'].reshape(
+                    num_imgs, -1, *mask_results['mask_pred'].size()[1:]
+                )
+            
+            num_classes = self.bbox_head[-1].num_classes
+            det_bboxes = []
+            det_labels = []
+
+            if self.bbox_head[-1].loss_cls.use_sigmoid:
+                cls_score = cls_score.sigmoid()
+            else:
+                cls_score = cls_score.softmax(-1)[..., :-1]
+
+            for img_id in range(num_imgs):
+                cls_score_per_img = cls_score[img_id]
+                scores_per_img, topk_indices = cls_score_per_img.flatten(
+                    0, 1).topk(
+                        self.test_cfg.max_per_img, sorted=False)
+                labels_per_img = topk_indices % num_classes
+                bbox_pred_per_img = proposal_list[img_id][topk_indices //
+                                                        num_classes]
+                if rescale:
+                    scale_factor = img_metas[img_id]['scale_factor']
+                    bbox_pred_per_img /= bbox_pred_per_img.new_tensor(scale_factor)
+                aug_det_bboxes[img_id].append(
+                    torch.cat([bbox_pred_per_img, scores_per_img[:, None]], dim=1))
+                det_bboxes.append(
+                    torch.cat([bbox_pred_per_img, scores_per_img[:, None]], dim=1))
+                aug_det_labels[img_id].append(labels_per_img)
+                det_labels.append(labels_per_img)
+            
+            if self.with_mask:
+                if rescale and not isinstance(scale_factors[0], float):
+                        scale_factors = [
+                            torch.from_numpy(scale_factor).to(det_bboxes[0].device)
+                            for scale_factor in scale_factors
+                        ]
+                _bboxes = [
+                        det_bboxes[i][:, :4] *
+                        scale_factors[i] if rescale else det_bboxes[i][:, :4]
+                        for i in range(len(det_bboxes))
+                    ]
+                mask_pred = mask_results['mask_pred']
+                for img_id in range(num_imgs):
+                    mask_pred_per_img = mask_pred[img_id].flatten(0, 1)[topk_indices]
+                    mask_pred_per_img = mask_pred_per_img[:, None, ...].repeat(1, num_classes, 1, 1)
+                    segm_result = self.mask_head[-1].get_seg_masks(
+                        mask_pred_per_img, _bboxes[img_id], det_labels[img_id],
+                        self.test_cfg, ori_shapes[img_id], scale_factors[img_id],
+                        rescale, format=False)
+                    aug_mask_preds[img_id].append(segm_result.detach().cpu().numpy())
+
+        det_bboxes, det_labels, mask_preds = [], [], []
+
+        for img_id in range(samples_per_gpu):
+            for aug_id in range(len(aug_det_bboxes[img_id])):
+                img_meta = aug_img_metas[aug_id][img_id]
+                img_shape = img_meta['ori_shape']
+                flip = img_meta['flip']
+                flip_direction = img_meta['flip_direction']
+                aug_det_bboxes[img_id][aug_id][:, :-1] = bbox_flip(aug_det_bboxes[img_id][aug_id][:, :-1],
+                                                    img_shape, flip_direction) if flip else aug_det_bboxes[img_id][aug_id][:, :-1]
+                if flip:
+                    if flip_direction == 'horizontal':
+                        aug_mask_preds[img_id][aug_id] = aug_mask_preds[img_id][aug_id][:, :, ::-1]
+                    else:
+                        aug_mask_preds[img_id][aug_id] = aug_mask_preds[img_id][aug_id][:, ::-1, :]
+
+        for img_id in range(samples_per_gpu):
+            det_bboxes_per_im = torch.cat(aug_det_bboxes[img_id])
+            det_labels_per_im = torch.cat(aug_det_labels[img_id])
+            mask_preds_per_im = np.concatenate(aug_mask_preds[img_id])
+
+            # TODO(vealocia): implement batched_nms here.
+            det_bboxes_per_im, keep_inds = batched_nms(det_bboxes_per_im[:, :-1], det_bboxes_per_im[:, -1].contiguous(), det_labels_per_im, self.test_cfg.nms)
+            det_bboxes_per_im = det_bboxes_per_im[:self.test_cfg.max_per_img, ...]
+            det_labels_per_im = det_labels_per_im[keep_inds][:self.test_cfg.max_per_img, ...]
+            mask_preds_per_im = mask_preds_per_im[keep_inds.detach().cpu().numpy()][:self.test_cfg.max_per_img, ...]
+            det_bboxes.append(det_bboxes_per_im)
+            det_labels.append(det_labels_per_im)
+            mask_preds.append(mask_preds_per_im)
+    
+        ms_bbox_result = {}
+        ms_segm_result = {}
+        num_classes = self.bbox_head[-1].num_classes
+        bbox_results = [
+            bbox2result(det_bboxes[i], det_labels[i], num_classes)
+            for i in range(samples_per_gpu)
+        ]
+        ms_bbox_result['ensemble'] = bbox_results
+        mask_results = [
+            mask2results(mask_preds[i], det_labels[i], num_classes)
+            for i in range(samples_per_gpu)
+        ]
+        ms_segm_result['ensemble'] = mask_results
+
+        if self.with_mask:
+            results = list(
+                zip(ms_bbox_result['ensemble'], ms_segm_result['ensemble']))
+        else:
+            results = ms_bbox_result['ensemble']
+        return results
 
     def forward_dummy(self, x, proposal_boxes, proposal_features, img_metas):
         """Dummy forward function when do the flops computing."""

@@ -1,9 +1,5 @@
-_base_ = './queryinst_r50_fpn_100_proposals_mstrain_480-800_3x_coco.py'
-num_proposals = 300
-model = dict(
-    rpn_head=dict(num_proposals=num_proposals),
-    test_cfg=dict(
-        _delete_=True, rpn=None, rcnn=dict(max_per_img=num_proposals, mask_thr_binary=0.5, nms=dict(type='nms', iou_threshold=0.7))))
+_base_ = './queryinst_swin_large_patch4_window7_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py'
+
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 
@@ -17,10 +13,8 @@ train_pipeline = [
         policies=[[
             dict(
                 type='Resize',
-                img_scale=[(480, 1333), (512, 1333), (544, 1333), (576, 1333),
-                           (608, 1333), (640, 1333), (672, 1333), (704, 1333),
-                           (736, 1333), (768, 1333), (800, 1333)],
-                multiscale_mode='value',
+                img_scale=[(400, 1333), (1200, 1333)],
+                multiscale_mode='range',
                 keep_ratio=True)
         ],
                   [
@@ -36,11 +30,8 @@ train_pipeline = [
                           allow_negative_crop=True),
                       dict(
                           type='Resize',
-                          img_scale=[(480, 1333), (512, 1333), (544, 1333),
-                                     (576, 1333), (608, 1333), (640, 1333),
-                                     (672, 1333), (704, 1333), (736, 1333),
-                                     (768, 1333), (800, 1333)],
-                          multiscale_mode='value',
+                          img_scale=[(400, 1333), (1200, 1333)],
+                          multiscale_mode='range',
                           override=True,
                           keep_ratio=True)
                   ]]),
@@ -50,3 +41,7 @@ train_pipeline = [
     dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels', 'gt_masks'])
 ]
 data = dict(train=dict(pipeline=train_pipeline))
+
+lr_config = dict(policy='step', step=[40,], warmup_iters=1000)
+total_epochs = 50
+runner = dict(type='EpochBasedRunnerAmp', max_epochs=total_epochs)

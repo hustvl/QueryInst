@@ -91,6 +91,24 @@ class QueryInst(TwoStageDetector):
             rescale=rescale)
         return results
 
+    def aug_test(self, imgs, img_metas, rescale=False):
+        """Test with augmentations.
+
+        If rescale is False, then returned bboxes and masks will fit the scale
+        of imgs[0].
+        """
+        x = self.extract_feats(imgs)
+        proposal_boxes, proposal_features, imgs_whwh = \
+            self.rpn_head.aug_test_rpn(x, img_metas)
+        results = self.roi_head.aug_test(
+            x,
+            proposal_boxes,
+            proposal_features,
+            img_metas,
+            aug_imgs_whwh=imgs_whwh,
+            rescale=rescale)
+        return results
+
     def forward_dummy(self, img):
         """Used for computing network flops.
 
