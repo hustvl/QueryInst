@@ -36,7 +36,7 @@
 
 |                            Configs                            |        Aug.         | Weights | Box AP | Mask AP |
 | :----------------------------------------------------------: | :----------------: | :-----: | :----: | :-----: |
-|              QueryInst_Swin_L_300_queries (single scale testing)               | 400 ~ 1200, w/ Crop |    -    |  [56.1](https://gist.github.com/Yuxin-CV/f477cb2a310e2db2b26112ae0f167baf)  |  [49.1](https://gist.github.com/Yuxin-CV/0e93ec9ab4c2d05be2d8a6cc61cd2f6b)   |
+|              [QueryInst_Swin_L_300_queries (single scale testing)](configs/queryinst/queryinst_swin_large_patch4_window7_fpn_300_proposals_crop_mstrain_400-1200_50e_coco.py)               | 400 ~ 1200, w/ Crop |    -    |  [56.1](https://gist.github.com/Yuxin-CV/f477cb2a310e2db2b26112ae0f167baf)  |  [49.1](https://gist.github.com/Yuxin-CV/0e93ec9ab4c2d05be2d8a6cc61cd2f6b)   |
 
 
 ### Main Results on COCO val
@@ -46,7 +46,7 @@
 | [QueryInst\_R50\_3x\_300_queries](configs/queryinst/queryinst_r50_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  46.9  |  41.4   |
 | [QueryInst\_R101\_3x\_300_queries](configs/queryinst/queryinst_r101_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  48.0  |  42.4   |
 |              QueryInst_X101-DCN_3x_300_queries               | 480 ~ 800, w/ Crop |    -    |  50.3  |  44.2   |
-|              QueryInst_Swin_L_300_queries (single scale testing)          | 400 ~ 1200, w/ Crop |    -    |  56.1  |  48.9   |
+|              [QueryInst_Swin_L_300_queries (single scale testing)](configs/queryinst/queryinst_swin_large_patch4_window7_fpn_300_proposals_crop_mstrain_400-1200_50e_coco.py)          | 400 ~ 1200, w/ Crop |    -    |  56.1  |  48.9   |
 
 
 ### Getting Started
@@ -105,6 +105,7 @@ If you find our paper and code useful in your research, please consider giving a
 ### TODO
 
 - [x] QueryInst training and inference code.
+- [x] QueryInst with Swin-Transformer and Test-Time-Augmentation.
 - [ ] QueryInst based on [Detectron2 toolbox](https://github.com/facebookresearch/detectron2) will be released in the near future.
 - [ ] QueryInst configurations for Cityscapes and YouTube-VIS.
 - [ ] QueryInst pretrain weights.
