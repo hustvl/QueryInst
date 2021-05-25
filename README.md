@@ -1,6 +1,6 @@
 <div align="center">   
 
-## QueryInst: Parallelly Supervised Mask Query for Instance Segmentation
+## Instance as Queries
 </div>
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/instance-segmentation-on-coco-minival)](https://paperswithcode.com/sota/instance-segmentation-on-coco-minival?p=queryinst-parallelly-supervised-mask-query)
@@ -17,7 +17,7 @@
 * For the first time, we demonstrate that an end-to-end query based framework driven by parallel supervision is competitive with well-established and highly-optimized methods in a wide range of instance-level recognition tasks ([object detection](https://paperswithcode.com/sota/object-detection-on-coco), [instance segmentation](https://paperswithcode.com/sota/instance-segmentation-on-coco) and video instance segmentation).
 
 
-> [**QueryInst: Parallelly Supervised Mask Query for Instance Segmentation**](http://arxiv.org/abs/2105.01928),
+> [**Instances as Queries**](http://arxiv.org/abs/2105.01928),
 >
 > by [Yuxin Fang\*](https://scholar.google.com/citations?user=_Lk0-fQAAAAJ&hl=en), Shusheng Yang\*, [Xinggang Wang†](https://xinggangw.info/), [Yu Li](http://yu-li.github.io), [Chen Fang](https://scholar.google.com/citations?hl=en&user=Vu1OqIsAAAAJ&view_op=list_works&citft=1&email_for_op=2yuxinfang%40gmail.com&gmla=AJsN-F5phq2a5UjdoNudoavuaCbem43ptau5cM8rWScWoxkUm0xFgCl6q49r-6MAWh-X9FVZCv9GuLk8D4u-ka0hVjKEWibox_kN9B346lA80Mrl4bUyDHBjwmbvsAfEBZ56neZ0D9p5neQBX8dBp8dD1I3248R0n0vVvzlfILA9oVpcn7xy6P0MQHUY-g0VT2g7sV6LJSPB7ZGyJFGqUk2SJ4MHRxG8U7Hz28WGuobOz-lrTnehfz5wsbwAaLETSZbP3vEMQ3Hc), [Ying Shan](https://scholar.google.com/citations?user=4oXBp9UAAAAJ&hl=en), Bin Feng, [Wenyu Liu](http://eic.hust.edu.cn/professor/liuwenyu/).
 >
@@ -95,7 +95,7 @@ If you find our paper and code useful in your research, please consider giving a
 
 ```BibTeX
 @article{QueryInst,
-  title={QueryInst: Parallelly Supervised Mask Query for Instance Segmentation},
+  title={Instances as Queries},
   author={Fang, Yuxin and Yang, Shusheng and Wang, Xinggang and Li, Yu and Fang, Chen and Shan, Ying and Feng, Bin and Liu, Wenyu},
   journal={arXiv preprint arXiv:2105.01928},
   year={2021}
