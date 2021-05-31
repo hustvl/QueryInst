@@ -43,13 +43,15 @@
 
 ### Main Results on COCO val
 
-|                            Configs                            |        Aug.         | Weights | Box AP | Mask AP |
-| :----------------------------------------------------------: | :----------------: | :-----: | :----: | :-----: |
-| [QueryInst\_R50\_3x\_300_queries](configs/queryinst/queryinst_r50_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  46.9  |  41.4   |
-| [QueryInst\_R101\_3x\_300_queries](configs/queryinst/queryinst_r101_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  48.0  |  42.4   |
-|              QueryInst_X101-DCN_3x_300_queries               | 480 ~ 800, w/ Crop |    -    |  50.3  |  44.2   |
-|              [QueryInst_Swin_L_300_queries (single scale testing)](configs/queryinst/queryinst_swin_large_patch4_window7_fpn_300_proposals_crop_mstrain_400-1200_50e_coco.py)          | 400 ~ 1200, w/ Crop |    -    |  56.1  |  48.9   |
+|                            Configs                            |        Aug.         | Weights | Box AP | Mask AP | Model |
+| :----------------------------------------------------------: | :----------------: | :-----: | :----: | :-----: | :----: |
+| [QueryInst\_R50\_3x\_300_queries](configs/queryinst/queryinst_r50_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  46.9  |  41.4   | [baidu](https://pan.baidu.com/s/1_WtTSVLLfWzKK7PAvHSylQ) |
+| [QueryInst\_R101\_3x\_300_queries](configs/queryinst/queryinst_r101_fpn_300_proposals_crop_mstrain_480-800_3x_coco.py) | 480 ~ 800, w/ Crop |    -    |  48.0  |  42.4   | [baidu](https://pan.baidu.com/s/1upDlN8SEaTpXyOXWAc9hWg) |
+|              QueryInst_X101-DCN_3x_300_queries               | 480 ~ 800, w/ Crop |    -    |  50.3  |  44.2   | - |
+|              [QueryInst_Swin_L_300_queries (single scale testing)](configs/queryinst/queryinst_swin_large_patch4_window7_fpn_300_proposals_crop_mstrain_400-1200_50e_coco.py)          | 400 ~ 1200, w/ Crop |    -    |  56.1  |  48.9   | [baidu](https://pan.baidu.com/s/1c-5A_XS1L79pBw5J0OlF9w) |
 
+Notes:
+* Accesscode for ```baidu``` is ```QIst```.
 
 ### Getting Started
 
@@ -110,4 +112,4 @@ If you find our paper and code useful in your research, please consider giving a
 - [x] QueryInst with Swin-Transformer and Test-Time-Augmentation.
 - [ ] QueryInst based on [Detectron2 toolbox](https://github.com/facebookresearch/detectron2) will be released in the near future.
 - [ ] QueryInst configurations for Cityscapes and YouTube-VIS.
-- [ ] QueryInst pretrain weights.
+- [x] QueryInst pretrain weights.
