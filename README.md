@@ -110,6 +110,15 @@ If you find our paper and code useful in your research, please consider giving a
 }
 ```
 
+```BibTeX
+@article{QueryTrack,
+  title={Tracking Instances as Queries},
+  author={Yang, Shusheng and Fang, Yuxin and Wang, Xinggang and Li, Yu and Shan, Ying and Feng, Bin and Liu, Wenyu},
+  journal={arXiv preprint arXiv:2106.11963},
+  year={2021}
+}
+```
+
 ### TODO
 
 - [x] QueryInst training and inference code.
