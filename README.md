@@ -12,6 +12,11 @@
   <img width="100%" alt="QueryInst-VIS Demo" src="https://user-images.githubusercontent.com/45201863/120617230-7d34a600-c48c-11eb-8a43-d61689a050be.gif">
 </div>
 
+
+* **[News]**
+  * **`Sep, 2021`:** We are now busy adding `QueryInst` to `mmdetection` library (https://github.com/open-mmlab/mmdetection/pull/6050, https://github.com/open-mmlab/mmdetection/issues/6000). The model will be augmented, please stay tuned. We will also extend `QueryInst` based on `mmdetection` library to other tasks, _e.g._, panoptic segmentation.
+
+
 * **TL;DR:** **QueryInst (Instances as Queries)** is a simple and effective query based instance segmentation method driven by parallel supervision on dynamic mask heads, which outperforms previous arts in terms of both accuracy and speed.
 
 
