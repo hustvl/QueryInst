@@ -14,7 +14,7 @@
 
 
 * **[News]**
-  * **`Oct, 2021`:** `QueryInst` is now included by `mmdetection` library, new checkpoints and augmented training settings are also involved. We suggest you to use the newest `QueryInst` implementation in `mmdetection`, and this repo will be maintained too. So feel free to leave some questions here if you get some problems with `QueryInst`.
+  * **`Oct, 2021`:** `QueryInst (ICCV 2021)` is now officially included by `mmdetection` library, with new checkpoints, corresponding logs, and augmented training settings. We suggest you to use the newest `QueryInst` implementation in `mmdetection`, meanwhile this repo will be maintained too. Issues are welcomed if you have problems using `QueryInst` to reproduce the COCO AP reported in our paper.
   * **`Sep, 2021`:** We are now busy adding `QueryInst` to `mmdetection` library (https://github.com/open-mmlab/mmdetection/pull/6050, https://github.com/open-mmlab/mmdetection/issues/6000). The model will be augmented, please stay tuned. We will also extend `QueryInst` based on `mmdetection` library to other tasks, _e.g._, panoptic segmentation.
 
 
@@ -131,6 +131,5 @@ If you find our paper and code useful in your research, please consider giving a
 
 - [x] QueryInst training and inference code.
 - [x] QueryInst with Swin-Transformer and Test-Time-Augmentation.
-- [ ] QueryInst based on [Detectron2 toolbox](https://github.com/facebookresearch/detectron2) will be released in the near future.
 - [ ] QueryInst configurations for Cityscapes and YouTube-VIS.
 - [x] QueryInst pretrain weights.
