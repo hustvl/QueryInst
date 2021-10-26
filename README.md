@@ -14,6 +14,7 @@
 
 
 * **[News]**
+  * **`Oct, 2021`:** `QueryInst` is now included by `mmdetection` library, new checkpoints and augmented training settings are also involved. We suggest you to use the newest `QueryInst` implementation in `mmdetection`, and this repo will be maintained too. So feel free to leave some questions here if you get some problems with `QueryInst`.
   * **`Sep, 2021`:** We are now busy adding `QueryInst` to `mmdetection` library (https://github.com/open-mmlab/mmdetection/pull/6050, https://github.com/open-mmlab/mmdetection/issues/6000). The model will be augmented, please stay tuned. We will also extend `QueryInst` based on `mmdetection` library to other tasks, _e.g._, panoptic segmentation.
 
 
