@@ -14,6 +14,7 @@
 
 
 * **[News]**
+  * **`Apr, 2022`:** If you like QueryInst for instance segmentation, you might also like TeViT (CVPR 2022, oral, [paper](https://arxiv.org/abs/2204.08412) / [code & models](https://github.com/hustvl/TeViT)) for high-performance video instance segmentation!.
   * **`Oct, 2021`:** `QueryInst (ICCV 2021)` is now officially included by `mmdetection` library, with new checkpoints, corresponding logs, and augmented training settings. We suggest you to use the newest `QueryInst` implementation in `mmdetection`, meanwhile this repo will be maintained too. Issues are welcomed if you have problems using `QueryInst` to reproduce the COCO AP reported in our paper.
   * **`Sep, 2021`:** We are now busy adding `QueryInst` to `mmdetection` library (https://github.com/open-mmlab/mmdetection/pull/6050, https://github.com/open-mmlab/mmdetection/issues/6000). The model will be augmented, please stay tuned. We will also extend `QueryInst` based on `mmdetection` library to other tasks, _e.g._, panoptic segmentation.
 
