@@ -3,10 +3,10 @@
 # Instances as Queries
 </div>
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/instance-segmentation-on-coco-minival)](https://paperswithcode.com/sota/instance-segmentation-on-coco-minival?p=queryinst-parallelly-supervised-mask-query)
+<!-- [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/instance-segmentation-on-coco-minival)](https://paperswithcode.com/sota/instance-segmentation-on-coco-minival?p=queryinst-parallelly-supervised-mask-query)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/instance-segmentation-on-coco)](https://paperswithcode.com/sota/instance-segmentation-on-coco?p=queryinst-parallelly-supervised-mask-query)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/object-detection-on-coco-minival)](https://paperswithcode.com/sota/object-detection-on-coco-minival?p=queryinst-parallelly-supervised-mask-query)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/object-detection-on-coco)](https://paperswithcode.com/sota/object-detection-on-coco?p=queryinst-parallelly-supervised-mask-query)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/queryinst-parallelly-supervised-mask-query/object-detection-on-coco)](https://paperswithcode.com/sota/object-detection-on-coco?p=queryinst-parallelly-supervised-mask-query) -->
 
 <div align="center">
   <img width="100%" alt="QueryInst-VIS Demo" src="https://user-images.githubusercontent.com/45201863/120617230-7d34a600-c48c-11eb-8a43-d61689a050be.gif">
